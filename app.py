@@ -15,9 +15,11 @@ def main(players_num):
     controller = Controller(players_num)
 
     # Optimal points for the first player
-    result = controller.calculate_optimal_points()
+    point = controller.get_optimal_point()
+    points = controller.get_optimal_points()
 
-    click.echo(result)
+    click.echo(point)
+    click.echo('Randomly chosen from optimal points: {}'.format(points))
 
 
 if __name__ == '__main__':
