@@ -1,11 +1,30 @@
 import numpy as np
+from tqdm import tqdm
 
-from .services import MatrixA, MatrixB
+from .services import MatrixA, MatrixB, Game
 
 
 class Controller:
     def __init__(self, players_num):
         self.players_num = players_num
+
+    def make_experiment(self, samples_num):
+        win_statistics = [0] * len(self.get_optimal_points())
+
+        with tqdm(total=samples_num) as pbar:
+            for i in range(samples_num):
+                pbar.update(1)
+                win_statistics[self.get_game_winner()] += 1
+
+        return [round(x / samples_num, 2) for x in win_statistics]
+
+    def get_game_winner(self):
+        points = self.get_optimal_points()
+        sample = np.random.uniform()
+
+        game = Game(points, sample)
+
+        return game.get_winner()
 
     def get_optimal_points(self):
         return self.get_solution().tolist()
