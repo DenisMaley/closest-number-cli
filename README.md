@@ -42,7 +42,7 @@ In case of ***x<sub>3</sub> > x<sub>2</sub>*** optimally to choose
 probability of winning is ***1 - x<sub>3</sub> = 1 - x<sub>2</sub> - &epsilon;*** 
 where ***&epsilon;*** is infinitely small and can be omitted.
 
-For the player B the optimal strategy is equalizing the chances of a third player:  
+For the player B the optimal strategy is equalizing the chances of the third player:  
 ***<sup>x<sub>2</sub></sup>/<sub>2</sub> = 1 - x<sub>2</sub>***  
 
 So the optimal choice for B if A chooses 0 
@@ -86,7 +86,7 @@ Optimal strategies we will get resolving the system of equations:
 ***[ x<sub>2</sub> = <sup>3</sup>/<sub>4</sub>***
 
 Thus considering symmetry (could be ***x<sub>1</sub> > x<sub>2</sub>***) both answers 
-***<sup>1</sup>/<sub>4</sub>*** and ***<sup>3</sup>/<sub>4</sub>*** are optimal for the first player
+***<sup>1</sup>/<sub>4</sub>*** and ***<sup>3</sup>/<sub>4</sub>*** are optimal for the first player.
 
 In this case if (A, B, C) choose 
 ***(<sup>1</sup>/<sub>4</sub>, <sup>3</sup>/<sub>4</sub>, <sup>1</sup>/<sub>2</sub>)***,
@@ -185,7 +185,7 @@ $ make strategy NUM=4
 ```
 where `NUM` is the number of players
 
-1. To make an experiment and see statistics of winning:
+2. To make an experiment and see statistics of winning:
 ```bash
 $ make proof NUM=4 SAMPLES=1000000
 ```
