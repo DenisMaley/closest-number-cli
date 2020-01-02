@@ -193,7 +193,7 @@ where `NUM` is the number of players, `SAMPLES` is the number of experiments.
 
 ### Result
 
-With `NUM=3 SAMPLES=1000000` the app gives the theoretical result calculated in Solution 2:
+With `NUM=3 SAMPLES=1000000` the app gives the theoretical result calculated in [Solution 2](#2-the-best-choice-for-a):
 
 ```
 > The points: [0.25, 0.5, 0.75]
