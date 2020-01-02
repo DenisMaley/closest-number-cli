@@ -1,8 +1,8 @@
 import numpy as np
 from tqdm import tqdm
 
-from .models import Game
 from .lib import MatrixA, MatrixB
+from .models import Game
 
 
 class Controller:
@@ -10,22 +10,35 @@ class Controller:
         self.players_num = players_num
 
     def make_experiment(self, samples_num):
-        win_statistics = [0] * len(self.get_optimal_points())
+        points = self.get_game_points()
+        win_counts = [0] * len(points)
 
         with tqdm(total=samples_num) as pbar:
             for i in range(samples_num):
                 pbar.update(1)
-                win_statistics[self.get_game_winner()] += 1
+                game = self.get_game(points)
+                win_counts[game.get_winner()] += 1
 
-        return [round(x / samples_num, 2) for x in win_statistics]
+        return points, [x / samples_num for x in win_counts]
 
-    def get_game_winner(self):
+    def get_game_points(self):
+        # optimal points for the first (players_num - 1) players
         points = self.get_optimal_points()
+        # point for the last player
+        # Could be any number between any two strategies: np.random.uniform(points[i], points[i + 1])
+        # where 0 < i < players_num - 1
+        # For the last player it doesn't matter
+        # For the simplicity but without loss of generality let's choose in the middle of the two last points
+        last_player_point = np.average(points[-2:])
+        points.insert(self.players_num - 2, last_player_point)
+
+        return points
+
+    @staticmethod
+    def get_game(points):
         sample = np.random.uniform()
 
-        game = Game(points, sample)
-
-        return game.get_winner()
+        return Game(points, sample)
 
     def get_optimal_points(self):
         return self.get_solution().tolist()
