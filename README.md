@@ -200,7 +200,8 @@ With `make strategy NUM=4` the app gives the optimal point for the first player:
 > Was randomly chosen from the several optimal points: [0.167, 0.5, 0.833]
 ```
 
-With `make proof NUM=3 SAMPLES=1000000` the app gives the theoretical result calculated in [Solution 2](#2-the-best-choice-for-a):
+With `make proof NUM=3 SAMPLES=1000000` the app gives the theoretical result calculated 
+in [Solution 2](#2-the-best-choice-for-a):
 
 ```
 > The points: [0.25, 0.5, 0.75]
