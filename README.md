@@ -133,7 +133,7 @@ Optimal strategies we will get resolving the system of equations:
 ***[ x<sub>1</sub> + x<sub>n-1</sub> = 1***
 
 We can resolve this system  using 
-[matrix method](https://en.wikipedia.org/wiki/System_of_linear_equations#Matrix_solution) 
+[matrix method][Matrix method] 
 converting to matrix form ***Ax = b*** where:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***[3&nbsp;-1&nbsp;&nbsp;0&nbsp;&nbsp;0&nbsp;&nbsp;...&nbsp;&nbsp;0&nbsp;&nbsp;0]***  
@@ -161,6 +161,9 @@ b&nbsp;=&nbsp;&nbsp;***[&nbsp;...&nbsp;]***
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***[&nbsp;1&nbsp;]***  
 
 The solution of this system is implemented in the current CLI app.
+### Requirements
+
+To build this project you will need [Docker][Docker Install].
 ### Installation
 ```bash
 $ git clone https://github.com/DenisMaley/closest-number-cli.git
@@ -195,3 +198,6 @@ With `NUM=3 SAMPLES=1000000` the app gives the theoretical result calculated in 
 > The points: [0.25, 0.5, 0.75]
 > Respectively won in percent of cases: [37.5, 25.0, 37.5]
 ```
+
+[Docker Install]:  https://docs.docker.com/install/
+[Matrix method]:  https://en.wikipedia.org/wiki/System_of_linear_equations#Matrix_solution
