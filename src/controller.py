@@ -1,7 +1,8 @@
 import numpy as np
 from tqdm import tqdm
 
-from .services import MatrixA, MatrixB, Game
+from .models import Game
+from .lib import MatrixA, MatrixB
 
 
 class Controller:
