@@ -164,6 +164,7 @@ The solution of this system is implemented in the current CLI app.
 ### Requirements
 
 To build this project you will need [Docker][Docker Install].
+
 ### Installation
 ```bash
 $ git clone https://github.com/DenisMaley/closest-number-cli.git
