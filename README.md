@@ -191,9 +191,16 @@ $ make proof NUM=4 SAMPLES=1000000
 ```
 where `NUM` is the number of players, `SAMPLES` is the number of experiments.
 
-### Result
+### Examples
 
-With `NUM=3 SAMPLES=1000000` the app gives the theoretical result calculated in [Solution 2](#2-the-best-choice-for-a):
+With `make strategy NUM=4` the app gives the optimal point for the first player:
+
+```
+> The optimal strategy for the first player: 0.167
+> Was randomly chosen from the several optimal points: [0.167, 0.5, 0.833]
+```
+
+With `make proof NUM=3 SAMPLES=1000000` the app gives the theoretical result calculated in [Solution 2](#2-the-best-choice-for-a):
 
 ```
 > The points: [0.25, 0.5, 0.75]
