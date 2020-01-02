@@ -11,7 +11,7 @@ def cli():
 
 @cli.command()
 @click.option(
-    '--players_num',
+    '--players_num', '-n',
     required=True,
     type=click.IntRange(3, None),
     default=3,
@@ -30,14 +30,14 @@ def optimal_strategy(players_num):
 
 @cli.command()
 @click.option(
-    '--players_num',
+    '--players_num', '-n',
     required=True,
     type=click.IntRange(3, None),
     default=3,
     help='Number of players',
 )
 @click.option(
-    '--samples_num',
+    '--samples_num', '-s',
     required=True,
     type=click.IntRange(1, None),
     default=100,
