@@ -1,0 +1,224 @@
+\documentclass[12pt]{article}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{empheq}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue
+}
+\setdefaultlanguage{english}
+\setmainfont[Mapping=tex-text]{CMU Serif}
+
+\title{A closest number game solution}
+\author{
+Denis Maley  \\
+Amsterdam  \\
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\textbf{\large The game description:}
+
+Three players $A, B, C$ play the following game. 
+
+First, $A$ picks a real number between $0$ and $1$ (both inclusive),  
+then $B$ picks a number in the same range (different from A’s choice) and  
+finally $C$ picks a number, also in the same range, 
+(different from the two chosen numbers). 
+
+We then pick a number in the range uniformly randomly.  
+Whoever’s number is closest to this random number wins the game. 
+
+Assume that $A$, $B$ and $C$ all play optimally and their sole goal is to 
+maximise their chances of winning. Also assume that if one of them has 
+several optimal choices, then that player will randomly pick one of the 
+optimal choices.
+
+\bigskip
+
+\textbf{\large The problems:}
+
+1. If $A$ chooses $0$, then what is the best choice for $B$?
+
+2. What is the best choice for $A$?
+
+3. What is the best choice for the first player 
+when the game is played among n players?
+
+\bigskip
+
+\textbf{\large Answers:}
+
+\textit{
+1. The optimal choice for $B$ if $A$ chooses $0$ is \boldmath$x_2 = \frac{2}{3}$
+}
+
+\textit{
+2. The optimal choice for $A$ is \boldmath$x_1 = \frac{1}{4}$ or 
+\boldmath$x_1 = \frac{3}{4}$
+}
+
+\textit{
+3. The best choice for the $A$ when the game is played among $n$ players
+you can get running 
+\href{https://github.com/DenisMaley/closest-number-cli}{the programm}. 
+}
+
+\newpage
+\textbf{\large Solutions:}
+
+\bigskip
+
+Let's agree that the players choose numbers $x_i$,
+where $i$ - tne number of a player.
+
+\bigskip
+
+\textbf{1. The best choice for $B$ if $A$ chooses $0$.}
+
+
+We have $x_1 = 0$.
+Let's assume the player $B$ has already chosen his number $x_2$.
+
+Now the player $C$ is making decision: he can choose $x_3$ either 
+$x_3 < x_2$ or $x_3 > x_2$.
+
+In case of $x_3 < x_2$ probability of winning is $\frac{x_2}{2}$ 
+regardless of the third player's choice.
+
+In case of $x_3 > x_2$ optimally to choose $x_2 + \epsilon$ i.e. 
+probability of winning is $1 - x_3 = 1 - x_2 - \epsilon$ where $\epsilon$ 
+is infinitely small and can be omitted.
+
+For the player $B$ the optimal strategy is equalizing 
+the chances of the third player: $\frac{x_2}{2} = 1 - x_2$
+
+So the optimal choice for $B$ if $A$ chooses $0$ is 
+{\boldmath$x_2 = \frac{2}{3}$}
+
+In this case if $(A, B, C)$ choose $(0, \frac{2}{3}, \frac{1}{3})$, 
+probabilities to win are $(\frac{1}{6}, \frac{1}{2}, \frac{1}{3})$ respectively.
+
+\bigskip
+
+\textbf{2. The optimal choice for $A$.}
+
+Let's assume the player $A$ and $B$ have already chosen $x_1$ and $x_2$ 
+respectively and $x_1 < x_2$.
+
+Then for the third player the optimal strategy $x_3$ is among \newline
+$x_1 - \epsilon, \forall x_3 \in (x_1, x_2), x_2 + \epsilon$, 
+where $\epsilon$ is infinitely small and can be omitted.
+
+The probabilities to win are $x_1, \frac{(x_2 - x_1)}{2}, 1 - x_2$
+
+Optimal strategies we will get resolving the system of equations:
+
+\bigskip
+
+$$\begin{cases} 
+x_1 = \frac{(x_2 - x_1)}{2} \\ 
+x_1 = 1 - x_2 
+\end{cases} 
+=>
+\begin{cases} 
+3x_1 - x_2 = 0 \\ 
+x_1 + x_2 = 1 
+\end{cases}
+=>
+\begin{cases} 
+x_1 = \frac{1}{4} \\ 
+x_2 = \frac{3}{4} 
+\end{cases}$$
+
+\bigskip
+
+Thus considering symmetry (could be $x_1 > x_2$) both answers 
+{\boldmath$\frac{1}{4}$} and {\boldmath$\frac{3}{4}$} are optimal 
+for the first player.
+
+In this case if $(A, B, C)$ choose $(\frac{1}{4}, \frac{3}{4}, \frac{1}{2})$, 
+probabilities to win are $(\frac{3}{8}, \frac{3}{8}, \frac{1}{4})$ respectively.
+
+\newpage
+
+\textbf{3. The best choice for the first player when the game is 
+played among $n$ players.}
+
+
+Now let's expand the previous solution to $n$ players:
+
+Let's assume the first $n-1$ players have already chosen 
+$x_1, ..., x_{n-1}$ respectively and $x_1 < ... < x_{n-1}$.
+
+Then for the third player the optimal strategy $x_3$ is among \newline
+$x_1 - \epsilon, \forall x_n \in (x_1, x_2), ..., 
+\forall x_n \in (x_{n-2}, x_{n-1}), x_{n-1} + \epsilon$, 
+where $\epsilon$ is infinitely small and can be omitted.
+
+The probabilities to win are
+$x_1, \frac{(x_2 - x_1)}{2}, ..., \frac{(x_{n-1} - x_{n-2})}{2}, 1 - x_{n-1}$
+
+Optimal strategies we will get resolving the system of equations:
+
+$$\begin{cases} 
+x_1 = \frac{(x_2 - x_1)}{2} \\
+x_1 = \frac{(x_3 - x_2)}{2} \\
+... \\
+x_1 = \frac{(x_{n-1} - x_{n-2})}{2} \\
+x_1 = 1 - x_{n-1} \\
+\end{cases}
+=>
+\begin{cases} 
+3x_1 - x_2 = 0 \\
+2x_1 + x_2 - x_3 = 0 \\
+... \\
+2x_1 + x_{n-2} - x_{n-1} = 0 \\
+x_1 + x_{n-1} = 1 \\
+\end{cases}$$
+
+We can resolve this system using 
+\href{https://en.wikipedia.org/wiki/System_of_linear_equations#Matrix_solution}
+{matrix method} converting to matrix form $Ax = b$ where:
+
+$$ 
+A = \begin{pmatrix} 
+3 & -1 & 0 & 0 & \cdots & 0 & 0 \\ 
+2 & 1 & -1 & 0 & \cdots & 0 & 0 \\
+2 & 0 & 1 & -1 & \cdots & 0 & 0 \\
+\vdots &&& \ddots &&& \vdots \\
+2 & 0 & 0 & 0 & \cdots & -1 & 0 \\
+2 & 0 & 0 & 0 & \cdots & 1 & -1 \\
+1 & 0 & 0 & 0 & \cdots & 0 & 1 
+\end{pmatrix}, 
+x = \begin{pmatrix}
+x_1 \\
+x_2 \\
+x_3 \\
+\vdots \\
+x_{n-3} \\
+x_{n-2} \\
+x_{n-1} \\
+\end{pmatrix}, 
+b = \begin{pmatrix}
+0 \\
+0 \\
+0 \\
+\vdots \\
+0 \\
+0 \\
+1 \\
+\end{pmatrix}.
+$$
+
+The solution of this system is implemented in the 
+\href{https://github.com/DenisMaley/closest-number-cli}{CLI app}.
+
+\bigskip
+\end{document}
