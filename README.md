@@ -93,7 +93,7 @@ In this case if (A, B, C) choose
 probabilities to win are 
 ***(<sup>3</sup>/<sub>8</sub>, <sup>3</sup>/<sub>8</sub>, <sup>1</sup>/<sub>4</sub>)*** respectively.
 
-##### 2. The best choice for the first player when the game is played among n players?
+##### 3. The best choice for the first player when the game is played among n players?
 
 Now let's expand the previous solution to ***n*** players:
 
