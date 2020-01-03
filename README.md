@@ -42,7 +42,11 @@ $ cd closest-number-cli
 $ make install
 ```
 
-If something goes wrong check Makefile to explore docker commands.
+If you face issues try docker command directly:
+
+```bash
+$ docker build -t closest-number . 
+```
 
 ### Usage
 1. To find an optimal strategy:
@@ -51,11 +55,23 @@ $ make strategy NUM=4
 ```
 where `NUM` is the number of players
 
+An alternative docker command:
+
+```bash
+$ docker run --rm -it closest-number optimal-strategy -n 4
+```
+
 2. To make an experiment and see statistics of winning:
 ```bash
 $ make proof NUM=4 SAMPLES=1000000
 ```
 where `NUM` is the number of players, `SAMPLES` is the number of experiments.
+
+An alternative docker command:
+
+```bash
+$ docker run --rm -it closest-number proof -n 4 -s 1000000
+```
 
 ### Examples
 
