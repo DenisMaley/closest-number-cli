@@ -4,6 +4,7 @@ from src.controller import Controller
 
 DECIMALS = 3
 
+
 @click.group()
 def cli():
     pass
